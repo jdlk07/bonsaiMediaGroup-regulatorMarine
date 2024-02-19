@@ -2,22 +2,91 @@
 @import 'foundation-sites/scss/foundation.scss';
 
 .widgetText {
-    &.hasBackground {
-        border-radius: 1.25rem;
-        padding: 2rem;
+    width: 100%;
+    display: flex;
+    width: 35rem;
+    margin-inline: auto;
+    justify-content: center;
+    // border: 1px solid red;
+    
+    .container {
+        text-align: center;
     }
 
-    &.layoutCentered {
-        .text {
-            text-align: center;
-            max-width: 950px;
-            margin: 0 auto;
+    h2 {
+        text-transform: uppercase;
+        margin: 0;
+        font-size: $h1FontSize;
+        font-weight: 800;
+        white-space: pre;
+    }
+    
+    h3 {
+        text-transform: uppercase;
+        font-size: $h2FontSize;
+        font-weight: 300;
+        white-space: pre;
+    }
+    
+    p {
+        font-weight: 350;
+        color: $grey;
+        margin-top: calc(map-get($margins, 1) * 1.5);
+    }
+
+    // a {
+    //     background-color: transparent;
+    //     border: 2px solid $greenLight;
+    //     border-radius: 10px;
+    //     padding: calc(map-get($margins, 1) * 0.5) calc(map-get($margins, 1) * 1.5);
+    //     color: $blue;
+    //     font-weight: 350;
+    //     font-size: $bodyFontSize;
+    //     text-transform: uppercase;
+
+    //     strong {
+    //         font-weight: 800;
+    //     }
+
+    //     &:hover {
+    //         background-color: $greenLight;
+    //         color: $blue;
+    //     }
+    // }
+
+    @include breakpoint(small only) {
+        max-width: calc(100vw - (map-get($margins, 2) * 1));
+
+        h2 {
+            font-size: $h1SmallFontSize;
+        }
+        h3 {
+            font-size: $h2SmallFontSize;
+        }
+
+        p {
+            font-size: $bodySmallFontSize;
+            margin-top: map-get($margins, 1);
         }
     }
 
-    @include breakpoint(large) {
-        &.hasBackground {
-            padding: 6rem 10rem;
-        }
-    }
+    //Whats this for? Can it be deleted?
+    // &.hasBackground {
+    //     border-radius: 1.25rem;
+    //     padding: 2rem;
+    // }
+
+    // &.layoutCentered {
+    //     .text {
+    //         text-align: center;
+    //         max-width: 950px;
+    //         margin: 0 auto;
+    //     }
+    // }
+
+    // @include breakpoint(large) {
+    //     &.hasBackground {
+    //         padding: 6rem 10rem;
+    //     }
+    // }
 }

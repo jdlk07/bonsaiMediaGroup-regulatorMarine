@@ -1,0 +1,136 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+$smallDividerSize: 0.5px;
+$thickDividerSize: 2.5px;
+
+.widgetTextColumns {
+  width: 60rem;
+  margin-inline: auto;
+  display: flex;
+  // align-items: center;
+  // border: 1px solid teal;
+
+  .column {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // height: 100%;
+    text-align: center;
+    padding: 0 calc(map-get($margins, 1) * 1.5);
+    text-transform: uppercase;
+    // border: 1px solid red;
+    box-sizing: border-box;
+    white-space: pre;
+
+    
+  &:not(:last-child) {
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      height: 80%;
+      width: $smallDividerSize;
+      background-color: $grey;
+      opacity: 0.5;
+    }
+  }
+
+  h1 {
+    font-weight: 800;
+  }
+
+  h2, h3, h5, p {
+    font-weight: 350;
+  }
+
+  h5 {
+    font-size: $h6FontSize;
+    line-height: 1.35rem;
+  }
+
+  strong {
+    font-weight: 800;
+  }
+
+  p {
+    font-size: $eyebrowFontSize;
+    color: $grey;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+
+  }
+
+  &.layoutThickDivider {
+    width: calc(100vw - map-get($margins, 3) * 2);
+    // border: 1px solid red;
+
+    .column {
+      &:not(:last-child) {
+        &::after {
+          width: $thickDividerSize;
+          background-color: $blue;
+        }
+        
+      }
+    }
+
+  }
+
+  @include breakpoint(small only) {
+    $mobileWidth: calc(100vw - map-get($margins, 1) * 2);
+
+    flex-direction: column;
+    width: $mobileWidth;
+    // margin-inline: map-get($margins, 2);
+    box-sizing: border-box;
+    // border: 1px solid red;
+    
+    .column {
+      white-space: normal;
+      padding: calc(map-get($margins, 1) * 1.5);
+
+      &:not(:last-child) {
+        &::after {
+        height: $smallDividerSize;
+        width: 4rem;
+        bottom: 0;
+        left: unset;
+        right: unset;
+      }
+      }
+    }
+
+    &.layoutThickDivider {
+      width: $mobileWidth;
+      // border: 1px solid red;
+  
+      .column {
+        padding: calc(map-get($margins, 1) * 1.5) calc(map-get($margins, 1) * 1.5);
+        white-space: pre;
+        
+        &:not(:last-child) {
+          &::after {
+            height: $thickDividerSize;
+            width: 8rem;
+          }
+          
+        }
+        
+        p {
+          margin-top: 0.5rem;
+          margin-bottom: 1rem;
+          white-space: normal;
+        }
+      }
+  
+    }
+
+  }
+
+}

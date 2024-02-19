@@ -1,0 +1,124 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+$dotsHeight: 3rem;
+
+.widgetCarousel {
+  position: relative;
+  width: 100%;
+  // max-width: calc(100% - $desktopContentMargin * 2);
+  max-width: calc(100% - map-get($margins, 2) * 2);
+  // height: 20rem;
+  // padding-bottom: 30%;
+  // box-sizing: border-box;
+  margin-inline: auto;
+  // background-color: teal;
+  border: 1px solid red;
+  // overflow: hidden;
+  
+  :global(.slick-slider) {
+    padding-top: $dotsHeight; //To account for the dots as they're absolute positioned
+
+  }
+
+  :global(.slick-slide) {
+    transition: 250ms;
+  }
+
+  :global(.slick-slide:not(.slick-current)) {
+      transform: scale(0.8);
+    
+  }
+  
+  .carouselItem {
+    position: relative;
+    // transition: 250ms;
+
+    // &.toLeft {
+    //   transform: rotateY(45deg);
+    // }
+
+    // &.toRight {
+    //   transform: rotateY(-45deg);
+    // }
+    
+    .modelContainer {
+      position: relative;
+      inset: 0;
+      overflow: hidden;
+      width: 100%;
+      padding-bottom: 101%;
+      border-radius: 10px;
+      overflow: hidden;
+      
+    }
+
+    .video {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover; 
+      z-index: -1;
+    }
+
+    .overlayContainer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: map-get($paddings, 1);
+    }
+
+    .labelContainer {
+
+      display: flex;
+      justify-content: flex-end;
+
+      .modelLabel {
+        color: $white;
+      }
+
+    }
+
+    .buttonsContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: map-get($margins, 1);
+      
+      a {
+        width: 12rem;
+        box-sizing: border-box;
+        text-align: center;
+        text-transform: uppercase;
+        &:not(:last-of-type) {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+
+  }
+
+  :global(.slick-dots) {
+    position: absolute;
+    top: 0;
+    height: $dotsHeight;
+
+    li {
+      // background-color: red;
+      height: 100%;
+      margin-inline: 0.5rem;
+      width: auto;
+      text-transform: uppercase;
+
+      &:not(:global(.slick-active)) {
+        transform: scale(0.8);
+      }
+    }
+  }
+  
+
+}

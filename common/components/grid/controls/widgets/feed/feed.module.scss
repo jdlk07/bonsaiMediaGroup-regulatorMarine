@@ -1,5 +1,91 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
 .widgetFeed {
-    .moreLinkContainer {
-        text-align: center;
+
+    display: flex;
+    margin-inline: map-get($margins, 4);
+    // background-color: teal;
+
+    $featuredWidth: 35%;
+
+    .item {
+        width: calc((100% - $featuredWidth) / 2);
+
+        &:not(:last-of-type) {
+            margin-right: 2rem;
+        }
+
+        .thumbnailContainer {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            
+        }
+        .thumbnail {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: 350ms ease-in-out;
+
+            &.activeThumbnail {
+                transform: scale(1.05);
+            }
+        }
+
+        &:first-of-type {
+            width: $featuredWidth;
+
+            .thumbnailContainer {
+                padding-bottom: 125%;
+            }
+        }
+
+        h4 {
+            font-size: $eyebrowFontSize;
+            color: $greenTextColor;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-weight: 350;
+            color: $grey;
+            max-width: 70%;
+        }
+    }
+
+    @include breakpoint(small only) {
+        margin-inline: map-get($margins, 1);
+        flex-direction: column;
+
+        .item {
+            width: 100% !important;
+
+            .thumbnailContainer {
+                padding-bottom: 100% !important;
+            }
+
+            h4 {
+                color: $blue;
+                margin: 1rem 0;
+                font-size: $h5SmallFontSize;
+            }
+
+            p {
+                max-width: 100%;
+            }
+
+            .bodyContainer {
+                padding: 0 0.5rem;
+            }
+
+            &:not(:last-of-type) {
+                margin-bottom: calc(map-get($margins, 2) * 1.5);
+            }
+        }
     }
 }

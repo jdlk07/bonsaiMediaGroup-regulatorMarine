@@ -1,0 +1,160 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+.wrapper {
+  position: relative;
+  width: calc(100% - map-get($margins, 2) * 2);
+  // height: 30rem;
+  padding-bottom: 33%;
+  margin-inline: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+
+  .navButton {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    &:last-of-type {
+      left: unset;
+      right: 2rem;
+    }
+  }
+
+  .carouselItem {
+    position: absolute;
+    inset: 0;
+
+
+    .bgImg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .contentContainer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      // border: 1px solid red;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $blueDark;
+        // background-color: #002E60;
+        opacity: 0.75;
+        z-index: 1;
+      }
+    }
+  
+    .bodyContainer {
+      z-index: 2;
+      max-width: 36rem;
+      text-align: center;
+      color: $white;
+      margin-bottom: 1rem;
+      z-index: 2;
+      // background-color: rgba(0, 128, 128, 0.5);
+
+      h3 {
+        text-transform: uppercase;
+        font-weight: 350;
+        line-height: 1.6rem;
+        margin-bottom: 2rem;;
+
+        strong {
+          font-weight: 800;
+        }
+      }
+
+      p {
+        font-weight: 350;
+      }
+    }
+
+    .buttonContainer {
+      
+      z-index: 2;
+
+    }
+
+    // .gradientButton {
+      // position: relative;
+      // padding: 0.75rem 2.5rem;
+      // border-radius: 5px;
+      // // background-color: teal;
+      // background: linear-gradient(141.66deg, rgb(238 238 238 / 20%) 0%, rgb(219 219 219 / 51%) 100%);
+      // color: $white;
+      // text-transform: uppercase;
+      // backdrop-filter: blur(5px);
+
+      // &:hover {
+      //   background-color: $arrowButtonBackgroundHoverColor;
+      // }
+
+      //Delete above
+
+    // }
+
+  }
+
+  @include breakpoint(small only) {
+      width: calc(100% - map-get($margins, 1));
+      padding-bottom: 105%;
+
+      .navButton {
+        top: unset;
+        bottom: 2rem;
+      }
+
+      .carouselItem {
+        .contentContainer {
+          justify-content: flex-end;
+        }
+  
+        .bodyContainer {
+          width: 100%;
+          padding: 0 1rem;
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          justify-content: center;
+          // border: 1px solid red;
+  
+          h3 {
+            font-size: $h2SmallFontSize;
+            margin-bottom: 1.5rem;
+          }
+  
+          p {
+            line-height: 1.5rem;
+            color: $greyLightest;
+          }
+        }
+  
+        .buttonContainer {
+          margin-bottom: 4rem;
+          // border: 1px solid red;
+          box-sizing: border-box;
+        }
+      }
+
+  }
+
+}

@@ -1,4 +1,112 @@
 @import '@styles/variables.scss';
 @import 'foundation-sites/scss/foundation.scss';
+
 .widgetPinnedLinks {
+  position: fixed;
+  bottom: 0;
+  height: $desktopPinnedLinksHeight;
+  // width: 100px;
+  background-color: $blue;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: calc(map-get($paddings, 1) * 0.65) calc(map-get($paddings, 1) * 1.75);
+  border-radius: 10px 10px 0 0;
+  z-index: 50;
+  
+  a {
+    position: relative;
+    color: $blueBackgroundTextColor;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 calc(map-get($paddings, 1) * 1.5);
+    // border: 1px solid red;
+
+
+    // img {
+    //   height: 1rem;
+    // }
+  
+    .label {
+      font-weight: 300;
+      margin: 0;
+      text-transform: uppercase;
+      margin-left: map-get($margins, 1);
+      white-space: nowrap;
+      color: $offWhite;
+      transition: 150ms;
+    }
+
+    svg {
+      height: 1rem;
+      width: auto;
+    }
+
+    &:hover {
+      color: $darkLinkHoverColor;
+      .label {
+        color: $darkLinkHoverColor;
+
+      }
+    }
+  }
+
+  a:not(:last-child) {
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 0.5px;
+      background-color: $grey;
+      opacity: 0.5;
+    }
+    
+  }
+
+
+  &.layoutTop {
+    top: 0;
+    bottom: unset;
+    border-radius: 0 0 10px 10px;
+
+  }
+
+
+
+  @include breakpoint(small only) {
+    height: $mobilePinnedLinksHeight;
+    width: 100%;
+    max-width: calc(100vw - (map-get($margins, 1) * 2));
+    padding: calc(map-get($paddings, 1)) 0;
+
+
+    a {
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      // padding: 0 calc(map-get($paddings, 1) * 1);
+
+
+      svg {
+        height: 1rem;
+      }
+
+      .label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        margin-top: 0.5rem;
+        font-size: $eyebrowSmallFontSize;
+        line-height: 0.8rem;
+      }
+    }
+
+
+  }
+  
 }

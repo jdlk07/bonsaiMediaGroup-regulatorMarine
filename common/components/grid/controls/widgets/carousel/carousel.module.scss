@@ -1,0 +1,25 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+$dotsHeight: 3rem;
+$tickerHeight: 3rem;
+$tickerMarginTop: 0.75rem;
+$borderRadius: 5px;
+
+.widgetCarousel {
+  position: relative;
+  width: 100%;
+  // max-width: calc(100% - map-get($margins, 3) * 2);
+  margin-inline: auto;
+  // display: flex;
+
+  // &.variantBoats {
+  //   @import './components//boatsCarousel.module.scss';
+  // }
+  
+  // &.variantText {
+  //   @import './components/textCarousel.module.scss';
+  // }
+
+
+}

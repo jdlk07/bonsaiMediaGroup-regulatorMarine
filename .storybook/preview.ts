@@ -1,8 +1,9 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react'
+import '../styles/globals.scss' //Included global styles here so that they're loaded for storybooks preview window
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -10,6 +11,6 @@ const preview: Preview = {
       },
     },
   },
-};
+}
 
-export default preview;
+export default preview

@@ -1,20 +1,98 @@
-import { FlexibleLinkModel } from '@lib/umbraco/types/flexibleLinkModel.type';
-import styles from './header.module.scss';
+import Link from '@components/links/link'
+import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef, useState } from 'react'
+// import MainLogo from '../../../content/media/logo.svg'
+import SearchIcon from '../../../content/media/search.svg'
+import styles from './header.module.scss'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export type BasicLink = {
-    label: string,
-    url: string
+  label: string
+  url: string
 }
 export type HeaderModel = {
-    logo: string,
-    secondaryLinks: BasicLink[],
-    mainLinks: BasicLink[],
-    startTransparent?: boolean
+  logo: string
+  secondaryLinks: BasicLink[]
+  mainLinks: BasicLink[]
+  startTransparent?: boolean
 }
 
 export default function Header(model: HeaderModel) {
-    return (
-        <p>Implement header.</p>
-    )
+  const headerRef = useRef<HTMLDivElement>(null)
+  const bgContainerRef = useRef<HTMLDivElement>(null)
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  let { startTransparent } = model
+
+  useGSAP(
+    () => {
+      if (startTransparent) {
+        gsap.from(headerRef.current, {
+          '--background-opacity': 0,
+          duration: 0.35,
+          scrollTrigger: {
+            start: 50,
+            toggleActions: 'play none none reverse',
+            onEnter: () =>
+              headerRef.current?.classList.remove(styles.transparent),
+            onLeaveBack: () =>
+              headerRef.current?.classList.add(styles.transparent),
+          },
+        })
+      }
+    },
+    { dependencies: [startTransparent] }
+  )
+
+  const Logo = model.logo
+
+  return (
+    <div className={styles.header} ref={headerRef}>
+      <div className={styles.container} ref={bgContainerRef}>
+        <Link href={'/'} className={styles.logoLink}>
+          <Logo />
+        </Link>
+        <div className={styles.links}>
+          <ul className={`${styles.secondaryLinks} noBullet`}>
+            {model.secondaryLinks.map((link, i) => (
+              <li key={i}>
+                <Link href={link.url}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+          <ul className={`${styles.mainLinks} noBullet`}>
+            {model.mainLinks.map((link, i) => (
+              <li key={i}>
+                <Link href={link.url}>{link.label}</Link>
+              </li>
+            ))}
+            <li>
+              <a>
+                <SearchIcon
+                // className={styles.searchIcon}
+                // src={SearchIcon}
+                // alt='Search'
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <button
+          className={`${styles.mobileNavigationButton} ${
+            isOpen ? styles.isOpen : ''
+          }`}
+          onClick={() => setIsOpen((s) => !s)}
+        >
+          <span className={styles.navSpan1} />
+          <span className={styles.navSpan2} />
+        </button>
+      </div>
+    </div>
+  )
 }
 
 // import Image from 'next/image';
@@ -85,7 +163,7 @@ export default function Header(model: HeaderModel) {
 //                     </div>
 //                     <div className={styles.main + ' hide-for-print'}>
 //                         <div className={styles.links}>
-//                             {data.secondaryLinks && 
+//                             {data.secondaryLinks &&
 //                                 <div className={styles.secondaryLinks}>
 //                                     <InlineList restrict="xxlarge" className={styles.secLinks + ' narrow'}  divider={true} items={data.secondaryLinks.map(item =>
 //                                         <DropdownLink className={styles.dropdownLink} {...item} />
