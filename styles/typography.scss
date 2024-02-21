@@ -39,7 +39,7 @@ h2, .h2 {
 
 h3, .h3 {
     font-size: $h3FontSize;
-    line-height: 1.8rem;
+    line-height: 2.5rem;
     // margin-bottom: 2.75rem;
     margin: 0;
     font-weight: 400;
@@ -49,7 +49,7 @@ h4, .h4 {
     font-size: $h4FontSize;
     // margin-bottom: 1.5rem;
     margin: 0;
-    line-height: 2.125rem;
+    line-height: 1.8rem;
     font-weight: 700;
 }
 
@@ -291,23 +291,27 @@ h1,h2,h3 {
 @include breakpoint(small only) {
     h1, .h1 {
         font-size: $h1SmallFontSize;
-        line-height: 2rem;
+        line-height: 1;
         // margin-bottom: 2rem;
     }
     h2, .h2 {
         font-size: $h2SmallFontSize;
-        line-height: 1.7rem;
+        line-height: 1;
     }
     h3, .h3 {
         font-size: $h3SmallFontSize;
+        line-height: 1;
     }
     h4, .h4 {
         font-size: $h4SmallFontSize;
+        line-height: 1;
     }
     h5, .h5 {
         font-size: $h5SmallFontSize;
+        line-height: 1;
     }
     h6, .h6 {
+        line-height: 1;
         font-size: $h6SmallFontSize;
     }
 }

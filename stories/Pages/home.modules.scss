@@ -1,0 +1,21 @@
+@import '@styles/variables.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+.groupContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bottomGap {
+  margin-top: $desktopPinnedLinksHeight;
+  height: 100rem;
+  width: 100%;
+  background-color: teal;
+
+  @include breakpoint(small only) {
+    margin-top: $mobilePinnedLinksHeight;
+  }
+}

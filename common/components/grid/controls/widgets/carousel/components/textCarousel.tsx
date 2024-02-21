@@ -57,84 +57,7 @@ export const TextCarousel = ({ variant, content }: CarouselTextVariant) => {
         initial={false}
         onExitComplete={() => setAnimating(false)}
       >
-        <motion.div
-          key={activeItem}
-          className={styles.carouselItem}
-          variants={slideVariants}
-          initial={direction === 'right' ? 'hiddenRight' : 'hiddenLeft'}
-          animate='visible'
-          exit={direction === 'right' ? 'exitLeft' : 'exitRight'}
-        >
-          <Image
-            src={item.background}
-            alt={item.imageAlt}
-            className={styles.bgImg}
-          />
-          <div className={styles.contentContainer}>
-            <motion.div
-              initial={{ y: '20px', opacity: 0 }}
-              animate={{
-                y: '0%',
-                opacity: 1,
-                transition: { duration: 0.35, delay: 0.5 },
-              }}
-              className={styles.bodyContainer}
-              dangerouslySetInnerHTML={{ __html: item.text }}
-            ></motion.div>
-            <motion.div
-              initial={{ y: '0px', opacity: 0 }}
-              animate={{
-                y: '0%',
-                opacity: 1,
-                transition: { duration: 0.35, delay: 0.75 },
-              }}
-              className={styles.buttonContainer}
-            >
-              <Link
-                href={item.link.url}
-                className={`gradientButton ${styles.gradientButton}`}
-              >
-                {item.link.label}
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-        {/* {items.map((item, i) => {
-          if (activeItem == i) {
-            return (
-              <motion.div
-                key={i}
-                className={styles.carouselItem}
-                initial={{
-                  x: i > activeItem ? '100%' : '-100%',
-                }}
-                animate={{
-                  x: '0%',
-                  transition: { duration: 1 },
-                }}
-                exit={{
-                  x: activeItem < i ? '100%' : '-100%',
-                  transition: { duration: 1 },
-                }}
-              >
-                <Image
-                  src={item.background}
-                  alt={item.imageAlt}
-                  className={styles.bgImg}
-                />
-                <div className={styles.contentContainer}>
-                  <div
-                    className={styles.bodyContainer}
-                    dangerouslySetInnerHTML={{ __html: item.text }}
-                  ></div>
-                  <Link href={item.link.url} className={styles.gradientButton}>
-                    {item.link.label}
-                  </Link>
-                </div>
-              </motion.div>
-            )
-          }
-        })} */}
+        <TextCarouselItem key={activeItem} {...{ direction, item }} />
       </AnimatePresence>
       <button
         className={`arrowButton right ${styles.navButton}`}
@@ -145,6 +68,62 @@ export const TextCarousel = ({ variant, content }: CarouselTextVariant) => {
     </div>
   )
 }
+
+interface TextCarouselItemProps {
+  direction: 'left' | 'right'
+  item: CarouselTextVariant['content']['items'][number]
+}
+
+const TextCarouselItem = ({ direction, item }: TextCarouselItemProps) => {
+  return (
+    <motion.div
+      className={`${styles.carouselItem}`}
+      variants={slideVariants}
+      initial={direction === 'right' ? 'hiddenRight' : 'hiddenLeft'}
+      animate='visible'
+      exit={direction === 'right' ? 'exitLeft' : 'exitRight'}
+      // onAnimationComplete={() =>
+      //   containerRef.current?.classList.add(styles.active)
+      // }
+    >
+      <Image
+        src={item.background}
+        alt={item.imageAlt}
+        className={styles.bgImg}
+      />
+      <div className={styles.contentContainer}>
+        <motion.div
+          initial={{ y: '15px', opacity: 0 }}
+          animate={{
+            y: '0%',
+            opacity: 1,
+            transition: { duration: 0.35, delay: 0.5 },
+          }}
+          className={styles.bodyContainer}
+          dangerouslySetInnerHTML={{ __html: item.text }}
+        ></motion.div>
+        <motion.div
+          initial={{ y: '10px', opacity: 0 }}
+          animate={{
+            y: '0%',
+            opacity: 1,
+            transition: { duration: 0.35, delay: 0.75 },
+          }}
+          className={styles.buttonContainer}
+        >
+          <Link
+            href={item.link.url}
+            className={`gradientButton ${styles.gradientButton}`}
+          >
+            {item.link.label}
+          </Link>
+        </motion.div>
+      </div>
+    </motion.div>
+  )
+}
+
+const animDuration = 0.5
 
 const slideVariants: Variants = {
   hiddenRight: {
@@ -159,7 +138,7 @@ const slideVariants: Variants = {
     x: '0',
     // opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: animDuration,
       // delay: 0.5,
       ease: 'linear',
     },
@@ -167,7 +146,7 @@ const slideVariants: Variants = {
   exitRight: {
     x: '100%',
     transition: {
-      duration: 0.5,
+      duration: animDuration,
       // delay: 0.5,
       ease: 'linear',
     },
@@ -175,7 +154,7 @@ const slideVariants: Variants = {
   exitLeft: {
     x: '-100%',
     transition: {
-      duration: 0.5,
+      duration: animDuration,
       // delay: 0.5,
       ease: 'linear',
     },

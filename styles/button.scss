@@ -1,4 +1,7 @@
 @import './variables.scss';
+// @import 'foundation-sites/scss/foundation.scss';
+
+
 .button {
     &:hover:not([disabled]) {
         cursor: pointer;
@@ -53,42 +56,56 @@
     max-width: 100%;
 }
 
-// .outlineButton {
-//     border: 2px solid $outlineButtonColor;
-//     color: $outlineButtonColor;
-//     background-color: $outlineButtonBackgroundColor;
-//     transition: background-color .3s;
-//     padding: .875rem 2.375rem;
-//     &:hover, &:focus {
-//         color: $outlineButtonHoverColor;
-//         background-color: $outlineButtonBackgroundHoverColor;
-//         border-color: $outlineButtonBackgroundHoverColor;
-//     }
-// }
-
 .outlineButton {
+    font-size: $h6FontSize;
     background-color: transparent;
     border: 2px solid $greenLight;
-    border-radius: 10px;
-    padding: calc(map-get($margins, 1) * 0.75) calc(map-get($margins, 1) * 1.5);
+    border-radius: 8px;
+    padding: calc(map-get($margins, 1)) calc(map-get($margins, 2));
     color: $outlineButtonColor;
-    // font-weight: 350;
-    // font-family: $gothamFont;
-    // font-size: $bodyFontSize;
     text-transform: uppercase;
     box-sizing: border-box;
-
-    
 
     &:hover, &:focus {
         background-color: $outlineButtonBackgroundHoverColor;
         color: $outlineButtonHoverColor;
     }
 
+    
+    &.white {
+        border-radius: 0px;
+        border: 1px solid $white;
+        padding: calc(map-get($margins, 1) * 1.5) calc(map-get($margins, 2));
+        // font-size: $bodyFontSize;
+        font-weight: 300;
+        
+            
+        &:hover, &:focus {
+            border-color: $outlineButtonBackgroundHoverColor;
+            background-color: $outlineButtonBackgroundHoverColor;
+            color: $white;
+        }
+    }
+
+    @include breakpoint(small only) {   
+        font-size: $h6SmallFontSize;
+        text-align: center;
+
+        &.white {
+            padding: calc(map-get($margins, 1) * 1.35) calc(map-get($margins, 1));
+        }
+    }
+
 }
 
 .arrowButton {
-    padding: 1rem;
+    height: 3.25rem; //Makes sure the button maintains a square shape when only the arrow is inside as the arrow is slightly rectangular so padding alone won't work.
+    width: 3.25rem; //Makes sure the button maintains a square shape when only the arrow is inside as the arrow is slightly rectangular so padding alone won't work.
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex: 0;
+    // padding: 1rem;
     border-radius: 5px;
     background-color: $arrowButtonBackgroundColor;
     cursor: pointer;

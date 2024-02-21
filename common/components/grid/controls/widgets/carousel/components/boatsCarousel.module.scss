@@ -45,6 +45,7 @@ $borderRadius: 5px;
 
     .dotLabel {
       font-weight: 800;
+      font-size: $h2FontSize;
     }
   }
 
@@ -138,6 +139,7 @@ $borderRadius: 5px;
       justify-content: flex-end;
 
       .modelLabel {
+        font-size: 3rem;
         color: $white;
         text-shadow: 2px 2px #000;
       }
@@ -173,6 +175,8 @@ $borderRadius: 5px;
       background-color: $blue;
       border-radius: $borderRadius;
       // overflow: hidden;
+
+      $tickerHPadding: 1.5rem;
       
       .tickerContainer {
         display: flex;
@@ -180,24 +184,24 @@ $borderRadius: 5px;
         height: 100%;
         width: 100%;
         overflow: hidden;
+        padding: 0 $tickerHPadding;
       }
 
-      $tickerHPadding: 1.5rem;
 
       .tickerSubContainer {
         display: flex;
         width: auto;
         overflow: visible;
         align-items: center;
-        padding: 0 $tickerHPadding;
-        margin-right: 2rem;
+        // padding: 0 $tickerHPadding;
+        // margin-right: 2rem;
         // border: 1px solid red;
       }
 
       .tickerStat {
         position: relative;
 
-        &:not(:last-of-type) {
+        // &:not(:last-of-type) {
           margin-right: 1rem;
           padding-right: 1rem;
 
@@ -211,7 +215,7 @@ $borderRadius: 5px;
             background-color: $grey;
             // transform: translateY(-50%);
           }
-        }
+        // }
 
       }
 

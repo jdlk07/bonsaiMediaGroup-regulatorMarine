@@ -150,7 +150,7 @@
 
             .logoLink {
                 svg {
-                    height: 2.5rem;
+                    height: min(2.5rem, 15vw);
                 }
             }
 

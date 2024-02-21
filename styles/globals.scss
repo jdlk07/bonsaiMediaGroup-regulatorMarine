@@ -16,8 +16,9 @@ html {
 }
 body {
     color: $textColor;
-    background-color: $offWhite;
-    font-family: $defaultFont;
+    // background-color: $offWhite;
+    background-color: $white;
+    font-family: $gothamFont;
     margin: 0;
     overflow: hidden auto !important;
     padding-right: 0 !important;
@@ -37,6 +38,17 @@ iframe {
 
 .animationWrapper {
     transform-origin: center 50vh;
+
+    &.pinnedLinks {
+        margin-bottom: calc($desktopPinnedLinksHeight + 1.5rem);
+    }
+    
+    @include breakpoint(small only) {
+        &.pinnedLinks {
+            margin-bottom: calc($mobilePinnedLinksHeight + 1rem);
+        }
+    }
+    
 }
 
 [id] {

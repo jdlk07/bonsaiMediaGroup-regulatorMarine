@@ -7,7 +7,6 @@ import WidgetWrapper from '../widgetWrapper'
 import styles from './feed.module.scss'
 
 interface BlogFeed extends WidgetModel {
-  variant: 'Blog'
   content: {
     items: {
       thumbnail: string | StaticImageData

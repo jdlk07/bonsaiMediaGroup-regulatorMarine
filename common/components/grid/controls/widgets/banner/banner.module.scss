@@ -10,17 +10,18 @@ $mediumTextBoxMargin: map-get($margins, 3);
   width: 100%;
   padding: 0 $desktopContentMargin;
   box-sizing: border-box;
+  // border: 1px solid red;
 
 
   .container {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 15px 15px;
     overflow: hidden;
     // padding-bottom: 55%; //To maintain aspect ratio
     //Maintaining aspect ratio causes the image to go past the bottom of the viewport on wide monitors. Using a height value instead so that the pinned links don't overlap the hero.
-    height: calc(100vh - $desktopPinnedLinksHeight - 10px);
+    height: calc(100vh - $desktopPinnedLinksHeight - 20px);
     
   }
 
@@ -92,7 +93,8 @@ $mediumTextBoxMargin: map-get($margins, 3);
 
     .textBox {
       bottom: calc($smallTextBoxMargin * 1.5);
-      max-width: 18rem;
+      width: 18rem;
+      max-width: calc(100% - $smallTextBoxMargin * 2);
       padding: calc(map-get($paddings, 1) * 1.5);
 
       h2 {

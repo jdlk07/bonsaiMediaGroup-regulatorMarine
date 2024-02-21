@@ -7,9 +7,15 @@ export type LayoutData = {
   children: React.ReactNode
   /**Header background will be partially transparent at top of page until scrolled by 50px. Default is false. */
   transparentHeader?: boolean
+  /**Adds a margin to the bottom of the page below the footer. */
+  bottomMargin?: 'pinnedLinks'
 }
 
-export default function Layout({ children, transparentHeader }: LayoutData) {
+export default function Layout({
+  children,
+  transparentHeader,
+  bottomMargin,
+}: LayoutData) {
   const animation = {
     variants: {
       initial: {
@@ -53,7 +59,7 @@ export default function Layout({ children, transparentHeader }: LayoutData) {
       <LazyMotion features={domAnimation}>
         <AnimatePresence exitBeforeEnter onExitComplete={resetScroll}>
           <m.div
-            className='animationWrapper'
+            className={`animationWrapper ${bottomMargin ? bottomMargin : ''}`}
             initial='initial'
             animate='animate'
             exit='exit'

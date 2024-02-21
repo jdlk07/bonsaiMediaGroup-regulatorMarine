@@ -1,7 +1,13 @@
 import Link from '@components/links/link'
+import { useGSAP } from '@gsap/react'
 import { WidgetModel } from '@lib/umbraco/types/widgetModel.type'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef } from 'react'
 import WidgetWrapper from '../widgetWrapper'
 import styles from './pinnedLinks.module.scss'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface PinnedLinksContent {
   links: {
@@ -14,8 +20,22 @@ interface PinnedLinksContent {
 export default function PinnedLinks(model: WidgetModel) {
   const { links } = model.content as PinnedLinksContent
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: 'bottom bottom',
+      endTrigger: 'body',
+      // end: 'bottom bottom',
+      pinSpacing: false,
+      pin: true,
+      // markers: true,
+    })
+  }, [])
+
   return (
-    <WidgetWrapper model={model} styles={styles}>
+    <WidgetWrapper model={model} styles={styles} ref={containerRef}>
       {links.map(({ icon: Icon, label, url }, i) => {
         // let Icon = icon.src
 

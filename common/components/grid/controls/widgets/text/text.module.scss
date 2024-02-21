@@ -11,11 +11,16 @@
     
     .container {
         text-align: center;
+
+        
+        :not(:first-child) {
+            margin-top: 0.5rem;
+        }
     }
 
     h2 {
         text-transform: uppercase;
-        margin: 0;
+        // margin: 0;
         font-size: $h1FontSize;
         font-weight: 800;
         white-space: pre;
@@ -31,37 +36,26 @@
     p {
         font-weight: 350;
         color: $grey;
-        margin-top: calc(map-get($margins, 1) * 1.5);
+        margin: 0; //Remove the margin set to .containers children
+        margin-top: map-get($margins, 2);
     }
 
-    // a {
-    //     background-color: transparent;
-    //     border: 2px solid $greenLight;
-    //     border-radius: 10px;
-    //     padding: calc(map-get($margins, 1) * 0.5) calc(map-get($margins, 1) * 1.5);
-    //     color: $blue;
-    //     font-weight: 350;
-    //     font-size: $bodyFontSize;
-    //     text-transform: uppercase;
+    a {
+        margin: 0; //Remove the margin set to .containers children
+        margin-top: 1.5rem;
+    }
 
-    //     strong {
-    //         font-weight: 800;
-    //     }
-
-    //     &:hover {
-    //         background-color: $greenLight;
-    //         color: $blue;
-    //     }
-    // }
 
     @include breakpoint(small only) {
         max-width: calc(100vw - (map-get($margins, 2) * 1));
 
         h2 {
             font-size: $h1SmallFontSize;
+            white-space: normal;
         }
         h3 {
             font-size: $h2SmallFontSize;
+            white-space: normal;
         }
 
         p {

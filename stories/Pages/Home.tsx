@@ -1,5 +1,7 @@
 import Banner from '@components/grid/controls/widgets/banner/banner'
 import Carousel from '@components/grid/controls/widgets/carousel/carousel'
+import { CarouselBoatsVariant } from '@components/grid/controls/widgets/carousel/components/boatsCarousel'
+import { CarouselTextVariant } from '@components/grid/controls/widgets/carousel/components/textCarousel'
 import Cta from '@components/grid/controls/widgets/cta/cta'
 import DealerSearch from '@components/grid/controls/widgets/dealerSearch/dealerSearch'
 import Feed from '@components/grid/controls/widgets/feed/feed'
@@ -16,20 +18,22 @@ import React from 'react'
 
 export const Home: React.FC = () => {
   return (
-    <Layout transparentHeader>
-      {/* <Banner {...(HomeContent.banner!.videoLeftAligned as WidgetModel)} /> */}
+    <Layout transparentHeader bottomMargin='pinnedLinks'>
+      {/* <div className={styles.groupContainer}> */}
       <Banner {...(HomeContent.banner!.imageLeftAligned as WidgetModel)} />
-      <div className='small-margin-bottom-2 medium-margin-bottom-3'></div>
+      {/* </div> */}
+      {/* {Group Containers are required for the PinnedLinks to pin to the bottom} */}
+      {/* <div className={styles.groupContainer}> */}
+      <div className='small-margin-top-0 medium-margin-top-3'></div>
       <PinnedLinks {...(HomeContent.pinnedLinks!.bottom as WidgetModel)} />
-      <div className='small-margin-bottom-2 medium-margin-bottom-3'></div>
+      <div className='small-margin-top-0 medium-margin-top-1'></div>
       <Text {...(HomeContent.text!.theFinest as WidgetModel)} />
       <div className='small-margin-bottom-1 medium-margin-bottom-2'></div>
       <TextColumns
         {...(HomeContent.textColumns!.unmatchedQuality as WidgetModel)}
       />
       <div className='small-margin-bottom-3 medium-margin-bottom-4'></div>
-      <Carousel {...(HomeContent.carousel!.boats as WidgetModel)} />
-      {/* <div className='small-margin-bottom-1 medium-margin-bottom-2'></div> */}
+      <Carousel {...(HomeContent.carousel!.boats as CarouselBoatsVariant)} />
       <Text {...(HomeContent.text!.aboveTheRest as WidgetModel)} />
       <div className='small-margin-bottom-2 medium-margin-bottom-3'></div>
       <Slideshow {...(HomeContent.slideshow!.standard as WidgetModel)} />
@@ -48,8 +52,10 @@ export const Home: React.FC = () => {
       <div className='small-margin-bottom-2 medium-margin-bottom-3'></div>
       <DealerSearch {...(HomeContent.dealerSearch!.standard as WidgetModel)} />
       <Cta {...(HomeContent.cta!.flyIn as WidgetModel)} />
-      <Carousel {...(HomeContent.carousel!.text as WidgetModel)} />
+      <Carousel {...(HomeContent.carousel!.text as CarouselTextVariant)} />
       <div className='small-margin-bottom-4 medium-margin-bottom-4'></div>
+      {/* {Pinned links must be positioned at the bottom of the group container to stick to the bottom } */}
+      {/* </div> */}
     </Layout>
   )
 }

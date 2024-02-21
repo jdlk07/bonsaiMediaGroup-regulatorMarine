@@ -35,7 +35,7 @@ $thickDividerSize: 2.5px;
       height: 80%;
       width: $smallDividerSize;
       background-color: $grey;
-      opacity: 0.5;
+      opacity: 0.6;
     }
   }
 
@@ -71,6 +71,10 @@ $thickDividerSize: 2.5px;
     // border: 1px solid red;
 
     .column {
+      &:first-child {
+        max-width: 45%;
+      }
+
       &:not(:last-child) {
         &::after {
           width: $thickDividerSize;
@@ -112,7 +116,11 @@ $thickDividerSize: 2.5px;
   
       .column {
         padding: calc(map-get($margins, 1) * 1.5) calc(map-get($margins, 1) * 1.5);
-        white-space: pre;
+        white-space: normal;
+        
+        &:first-child {
+        max-width: 100%;
+        }
         
         &:not(:last-child) {
           &::after {

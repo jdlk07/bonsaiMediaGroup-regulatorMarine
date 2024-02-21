@@ -2,16 +2,19 @@
 @import 'foundation-sites/scss/foundation.scss';
 
 .widgetPinnedLinks {
-  position: fixed;
-  bottom: 0;
+  // position: fixed;
+  // bottom: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
   height: $desktopPinnedLinksHeight;
-  // width: 100px;
+  max-width: 48rem;
+  margin-inline: auto;
+  // width: 100%;
   background-color: $blue;
-  left: 50%;
-  transform: translateX(-50%);
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: calc(map-get($paddings, 1) * 0.65) calc(map-get($paddings, 1) * 1.75);
   border-radius: 10px 10px 0 0;
   z-index: 50;
@@ -81,18 +84,22 @@
     height: $mobilePinnedLinksHeight;
     width: 100%;
     max-width: calc(100vw - (map-get($margins, 1) * 2));
-    padding: calc(map-get($paddings, 1)) 0;
+    // padding: 0 (map-get($margins, 1));
+    padding: min(map-get($paddings, 1), 1vw) 0;
+    box-sizing: border-box;
 
 
     a {
       flex: 1;
       flex-direction: column;
       justify-content: center;
+      // min-width: 30vw;
+      padding: 0 min(1.5rem, 1vw);
       // padding: 0 calc(map-get($paddings, 1) * 1);
 
 
       svg {
-        height: 1rem;
+        height: min(1rem, 4vw);
       }
 
       .label {
@@ -100,8 +107,8 @@
         flex-direction: column;
         align-items: center;
         margin: 0;
-        margin-top: 0.5rem;
-        font-size: $eyebrowSmallFontSize;
+        margin-top: min(0.5rem, 2vw);
+        font-size: min($eyebrowSmallFontSize, 3vw);
         line-height: 0.8rem;
       }
     }

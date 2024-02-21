@@ -75,9 +75,9 @@ export const BoatsCarousel = (model: CarouselBoatsVariant) => {
             //   // display: value < i - 2 || value > i + 2 ? 'none' : 'block', //Causes performance issues
           })
 
-          //Animations for the dots above the carousel
+          //Animations for the navigation buttons (model numbers) above the carousel
 
-          const dotTransformer = gsap.utils.pipe(
+          const dotScaleTransformer = gsap.utils.pipe(
             gsap.utils.mapRange(i - 3, i + 3, 0, 1),
             gsap.utils.clamp(0, 1),
             gsap.utils.interpolate([0.3, 0.4, 1, 0.4, 0.3])
@@ -87,7 +87,7 @@ export const BoatsCarousel = (model: CarouselBoatsVariant) => {
 
           setDotValues({
             // scale: dotTransformer(value),
-            transform: `scale(${dotTransformer(
+            transform: `scale(${dotScaleTransformer(
               value
             )}) translateZ(0) perspective(1px)`,
           })
@@ -236,7 +236,7 @@ const BoatCarouselItem = ({ onClick, ...item }: BoatCarouselItemProps) => {
         />
         <div className={styles.overlayContainer}>
           <div className={styles.labelContainer}>
-            <h2 className={styles.modelLabel}>{item.modelNumber}</h2>
+            <h1 className={styles.modelLabel}>{item.modelNumber}</h1>
           </div>
           <div className={styles.buttonsContainer}>
             <Link href={'/'} className='button'>

@@ -21,6 +21,15 @@
   font-style: book;
 }
 
+//This isn't the correct font weight
+
+// @font-face {
+//   font-family: 'Gotham';
+//   src: url("../content/fonts/GothamRegular.otf") format("truetype");
+//   font-weight: 400;
+//   font-style: regular;
+// }
+
 @font-face {
   font-family: 'Gotham';
   src: url("../content/fonts/GothamMedium.ttf") format("truetype");
@@ -57,7 +66,7 @@ $redLight: #f97a7a;
 $red: #B2334E;
 $black: #000000;
 $blueLight: #59B7DF;
-$blueLighter: #A1E3FF;
+$blueLighter: #ADE0ED;
 $blueLightest: #EFF9FE;
 $blueLight2: #DEF5FF;
 $blueVibrant: #0098CE;
@@ -101,10 +110,10 @@ $gothamFont: 'Gotham', $defaultFont, sans-serif;
 
 /*---- FONT SIZES ----*/
 $h1FontSize: 3.55rem;
-$h2FontSize: 2rem;
-$h3FontSize: 1.8rem;
-$h4FontSize: 1.5rem;
-$h5FontSize: 1.25rem;
+$h2FontSize: 2.5rem;
+$h3FontSize: 2.2rem;
+$h4FontSize: 1.8rem;
+$h5FontSize: 1.5rem;
 $h6FontSize: 1.125rem;
 $bodyFontSize: 0.9rem;
 $eyebrowFontSize: 0.75rem;
@@ -151,7 +160,7 @@ $paddings: (1: 1rem, 2: 2.5rem, 3: 7rem, 4: 10rem);
 $mobileHeaderHeight: rem-calc(65);
 // $desktopHeaderHeight: rem-calc(120);
 $desktopHeaderHeight: rem-calc(100); //Reduced the size as it wasn't matching the design
-$desktopPinnedLinksHeight: rem-calc(55);
+$desktopPinnedLinksHeight: min(rem-calc(55), 27vw);
 $mobilePinnedLinksHeight: rem-calc(80);
 $breakpoints: (small: 0, medium:640px, large: 1024px, xlarge: 1200px, xxlarge:1440px);
 $breakpoint-classes: (small medium large xlarge xxlarge);

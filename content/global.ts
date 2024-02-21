@@ -1,4 +1,11 @@
+import garminLogo from './media/garmin-logo.svg'
 import Logo from './media/logo.svg'
+import facebookIcon from './media/socialMediaIcons/icon-facebook.svg'
+import instagramIcon from './media/socialMediaIcons/icon-instagram.svg'
+import linkedinIcon from './media/socialMediaIcons/icon-linkedin.svg'
+import tikTokIcon from './media/socialMediaIcons/icon-tikTok.svg'
+import youtubeIcon from './media/socialMediaIcons/icon-youtube.svg'
+import yamahaLogo from './media/yamaha-logo.svg'
 
 export const HeaderContent = {
   // logo: "https://placehold.it/183x84",
@@ -179,26 +186,46 @@ export const FooterContent = {
         },
       ],
     },
+    {
+      innerColumns: [
+        {
+          links: [
+            {
+              label: 'Contact',
+              url: 'https://google.com',
+            },
+            {
+              label: 'Find Your Dealer',
+              url: 'https://google.com',
+            },
+            {
+              label: 'Store',
+              url: 'https://google.com',
+            },
+          ],
+        },
+      ],
+    },
   ],
   socialMedia: [
     {
-      icon: 'fa-facebook',
+      icon: facebookIcon,
       url: 'https://facebook.com',
     },
     {
-      icon: 'fa-instagram',
+      icon: instagramIcon,
       url: 'https://instagram.com',
     },
     {
-      icon: 'fa-youtube',
+      icon: youtubeIcon,
       url: 'https://youtube.com',
     },
     {
-      icon: 'fa-linkedin',
+      icon: linkedinIcon,
       url: 'https://linkedin.com',
     },
     {
-      icon: 'fa-tiktok',
+      icon: tikTokIcon,
       url: 'https://tiktok.com',
     },
   ],
@@ -230,8 +257,14 @@ export const FooterContent = {
   ],
   baseLogos: [
     {
-      image: 'https://placehold.it/166x44',
+      icon: yamahaLogo,
       url: 'https://google.com',
+      // imageAlt: 'Yamaha',
+    },
+    {
+      icon: garminLogo,
+      url: 'https://google.com',
+      // imageAlt: 'Garmin',
     },
   ],
 }

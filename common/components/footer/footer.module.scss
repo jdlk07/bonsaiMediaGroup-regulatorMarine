@@ -1,157 +1,330 @@
 @import '@styles/variables.scss';
 @import 'foundation-sites/scss/foundation.scss';
 
-.footer {
-    padding: 3rem 0;
-    background-color: $blue;
-    font-size: 1rem;
-    font-weight: 300;
+$horizontalPadding: map-get($paddings, 3);
 
-    a:not([class]){
+.footer {
+    width: calc(100% - map-get($margins, 2) * 2);
+    margin: 0 auto;
+    // height: 20rem;
+    border-radius: 10px;
+    background-color: $blue;
+    padding: map-get($paddings, 2) 0 map-get($paddings, 2);
+    color: $white;
+
+    
+    a {
         color: $white;
-        text-decoration: none;
-        &:hover, &:focus {
-            color: $purple !important;
+        &:hover {
+            color: $darkLinkHoverColor;
         }
     }
 
-    .topper {
+    .topContainer {
+        width: 100%;
         display: flex;
-        align-items: flex-end;
         justify-content: space-between;
         flex-wrap: wrap;
-        border-bottom: 1px solid $blueLight;
-        padding-bottom: 2rem;
-        margin-bottom: 2rem;
-        > {
-            div, ul {
-                margin-bottom: 2rem;
+        padding: 0 $horizontalPadding; //Vertical padding places on linksColumn so that there's a gap when if it wraps
+    }
+
+    .linksColumn {
+        // border: 1px solid red;
+        padding: map-get($paddings, 2) 0;
+        &:not(:last-of-type) {
+            margin-right: 3rem;
+        }
+
+        .columnLabel {
+            font-weight: 350;
+            margin-bottom: calc(map-get($paddings, 1) / 2);
+            padding-bottom: calc(map-get($paddings, 1) / 2);
+            border-bottom: 1px solid $blueLighter;
+        }
+
+        .innerColumnsWrapper {
+            display: flex;
+            padding-right: calc(map-get($margins, 1) * 1.5);
+        }
+
+        .innerColumn {
+
+            &:not(:last-of-type) {
+                margin-right: calc(map-get($margins, 2) * 1.25);
+            }
+
+        }
+        a {
+            display: block;
+            font-size: $bodyFontSize;
+            font-weight: 300;
+            color: $white;
+            text-transform: uppercase;
+            transition: 150ms;
+
+            &:hover {
+                color: $darkLinkHoverColor;
+                font-weight: 600;
+                text-shadow: 0 0 2px black;
+            }
+
+            &.standaloneLink {
+                text-transform: none;
+                color: $white;
+                font-weight: 500;
+                font-size: $h6FontSize;
+                &:not(:last-of-type) {
+                    margin-bottom: 0.5rem;
+                }
+
+                &:hover {
+                    color: $darkLinkHoverColor;
+                }
             }
         }
     }
-    
-    .footerSocialLinks {
-        display: flex !important;
-        margin-top: .75rem !important;
-        margin-bottom: 0;
-        li {
-            margin-bottom: 0;
-        }
-    }
-    
-    .footerSocialLink {
-        font-size: 1rem;
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $blueLighter;
-        color: $blue !important;
-        transition: all .3s;
-        &:hover, &:focus {
-            color: $white !important;
-            background-color: $purple;
-        }
-    }
-    
-    .text {
+
+    .middleContainer {
+        $verticalPadding: map-get($paddings, 2); //Apply padding on child elements to double as padding on smaller screens when content wraps
+        
         width: 100%;
-        strong {
-            font-weight: 400;
-            font-size: 1.125rem;
-        }
-
-        p {
-            max-width: 400px;
-        }
-    }
-
-    &.noLinks {
-        .text {
-            p {
-                max-width: 100%;
-            }
-        }
-    }
-
-    .footerColumns {
         display: flex;
         flex-wrap: wrap;
-        margin: 0 -2rem ;
+        padding: 0 $horizontalPadding;
+        padding-bottom: $verticalPadding;
+        border-color: $grey;
+        border-style: solid;
+        border-width: 1px 0;
+
+
         > * {
-            margin: 0 2rem 2rem;
+            margin-top: $verticalPadding;
+
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
         }
-        ul {
-            width: 100%;
-            list-style: none;
+        
+        // border: 1px solid red;
+    }
+
+    .socialMediaLinks {
+        display: flex;
+
+        .socialMediaLink {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 5px;
+            background-color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            &:not(:last-child) {
+                margin-right: 0.5rem;
+            }
+
+            svg {
+                // height: 0.95rem;
+                height: 30%;
+                color: $blue;
+            }
+
+            &:hover {
+                background-color: $greenLight;
+            }
         }
     }
 
-    .mainLinks {
-        font-size: 1.125rem;
-        li {
-            margin-bottom: .5rem;
-            &:last-child {
+    // :global(.outlineButton) {
+    //     &:not(las)
+    // }
+    $bottomContainerMarginTop: calc(map-get($margins, 1) * 1.5);
+
+    .bottomContainer {
+
+        width: 100%;
+        padding: 0 $horizontalPadding;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        // margin-top: calc(map-get($margins, 1) * 1.5);
+        font-size: $eyebrowFontSize;
+        font-weight: 300;
+        color: $white;
+
+        .leftContainer {
+            margin-top: $bottomContainerMarginTop;
+            .copyrightContainer {
+                p {
+                    font-size: inherit;
+                    font-weight: inherit;
+                    margin: 0;
+                    line-height: 2;
+                }
+            }
+    
+        }
+    }
+
+
+        .baseLinks {
+            display: flex;
+            margin-top: 0.5rem;
+             a {
+                position: relative;
+                font-weight: inherit;
+                font-size: inherit;
+
+                &:not(:last-of-type) {
+                    padding-right: 0.75rem;
+                    margin-right: 0.75rem;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        height: 1rem;
+                        width: 1px;
+                        background-color: $grey;
+                    }
+                }
+             }
+            
+        }
+
+        .baseLogosContainer {
+            display: flex;
+            align-items: flex-start;
+            margin-top: calc($bottomContainerMarginTop + 0.5rem);
+
+            a {
+
+                &:not(:last-of-type) {
+                    margin-right: 2.25rem;
+                }
+    
+                svg {
+                    height: 1.7rem;
+                }
+
+                &:nth-of-type(2) {
+                    svg {
+                        height: 2rem;
+                        transform: translateY(-25%);
+                    }
+                }
+            }
+            
+        }
+    
+
+
+    @include breakpoint(small only) {
+        width: calc(100% - map-get($margins, 1) * 2);
+        padding: calc(map-get($paddings, 2) * 1.5) map-get($paddings, 2);
+
+        .socialMediaLinks {
+            justify-content: space-between;
+            padding-bottom: map-get($paddings, 2);
+
+            .socialMediaLink {
+                $size: min(3.5rem, 12vw);
+                height: $size;
+                width: $size;
+                margin: 0;
+            }
+        }
+
+        .linksColumn {
+            margin-right: 0 !important;
+            padding: 0;
+
+            // &:not(:last-of-type) {
+                margin-bottom: map-get($paddings, 2);
+            // }
+
+            &.standalone {
+                
                 margin-bottom: 0;
             }
-        }
-    }
 
-    .emphasizedLink {
-        color: $blueLight;
-        font-weight: 400;
-        transition: color .3s;
-        &:hover, &:focus {
-            color: $purple;
-        }
-    }
-    span.emphasizedLink {
-        &:hover, &:focus {
-            color: $blueLight;
-        }
-    }
 
-    .secondaryLinksDivider {
-        display: flex;
-        align-items: center;
-        &::after {
-            content: '';
-            width: 1px;
-            background-color: $blueLight;
-            display: block;
-            height: 1rem;
-        }
-    }
+            .columnLabel {
+                font-size: $h2SmallFontSize;
+                font-weight: 400;
+                margin-bottom: map-get($paddings, 1);
+                padding-bottom: map-get($paddings, 1);
+            }
 
-    @include breakpoint(medium) {
-        padding-top: 7rem;
-        .topper {
-            margin-bottom: 3rem;
+            .innerColumnsWrapper {
+                // justify-content: space-between;
+                justify-content: space-between;
+            }
+
+            .innerColumn {
+                margin-right: min(map-get($margins, 2), 2vw) !important;
+
+           
+
+                &:nth-of-type(2) {
+                    width: 40%;
+                }
+
+                a {
+                    margin-bottom: 0.5rem;
+
+                    &.standaloneLink {
+                        margin-bottom: 1.5rem;
+                        font-size: $h3SmallFontSize;
+    
+                    }
+                }
+            }
+
+
         }
 
-        .footerColumns {
-            ul {
-                width: auto;
-                max-width: 185px;
+        .mobileOutlineButtonsContainer {
+
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            :global(.outlineButton) {
+                margin: map-get($margins, 1) 0;
             }
         }
+
+        .baseLogosContainer {
+            display: flex;
+            justify-content: space-between;
+            margin: calc(map-get($margins, 2) * 1.5) 0;
+
+            a {
+
+                &:not(:last-of-type) {
+                    margin-right: 0;
+                }
+
+                svg {
+                    height: min(1.8rem, 7vw);
+                }
+
+                &:nth-of-type(2) {
+                    svg {
+                        height: min(2.6rem, 8vw);
+                        transform: translateY(-20%);
+                    }
+                }
+            }
+            
+        }
+
     }
 
-    @include breakpoint(large) {
-        .footerColumns {
-            flex-wrap: nowrap;
-        }
-        .text {
-            max-width: 360px;
-        }
-        &.noLinks {
-            .text {
-                max-width: 100%;
-            }
-        }
-    }
+
 }
-
-$smallGutter: rem-calc(map-get($grid-margin-gutters, small));
