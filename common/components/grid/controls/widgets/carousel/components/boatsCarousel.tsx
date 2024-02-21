@@ -77,19 +77,26 @@ export const BoatsCarousel = (model: CarouselBoatsVariant) => {
 
           //Animations for the navigation buttons (model numbers) above the carousel
 
-          const dotScaleTransformer = gsap.utils.pipe(
+          // const dotScaleTransformer = gsap.utils.pipe(
+          //   gsap.utils.mapRange(i - 3, i + 3, 0, 1),
+          //   gsap.utils.clamp(0, 1),
+          //   gsap.utils.interpolate([0.3, 0.4, 1, 0.4, 0.3])
+          // )
+
+          const dotFontSizeTransformer = gsap.utils.pipe(
             gsap.utils.mapRange(i - 3, i + 3, 0, 1),
             gsap.utils.clamp(0, 1),
-            gsap.utils.interpolate([0.3, 0.4, 1, 0.4, 0.3])
+            gsap.utils.interpolate(['1rem', '2.8rem', '1rem'])
           )
 
           const setDotValues = gsap.quickSetter(dots[i], 'css')
 
           setDotValues({
             // scale: dotTransformer(value),
-            transform: `scale(${dotScaleTransformer(
-              value
-            )}) translateZ(0) perspective(1px)`,
+            // transform: `scale(${dotScaleTransformer(
+            //   value
+            // )}) translateZ(0) perspective(1px)`,
+            fontSize: dotFontSizeTransformer(value),
           })
         })
       }

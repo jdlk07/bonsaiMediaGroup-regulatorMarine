@@ -38,14 +38,15 @@ $borderRadius: 5px;
 
       
       &:not(:last-of-type) {
-        margin-right: 1rem;
+        margin-right: 2.5rem;
       }
       
+      font-size: $h2FontSize;
     }
 
     .dotLabel {
       font-weight: 800;
-      font-size: $h2FontSize;
+      font-size: inherit;
     }
   }
 
